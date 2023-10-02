@@ -25,20 +25,6 @@ public class ObraController {
 		return obraRepository.save(obra);
 	}
 
-	@PostMapping("/associarCliente/{obraId}/{clienteId}")
-	public ResponseEntity<String> associarCliente(@PathVariable Long obraId, @PathVariable Long clienteId) {
-		Obra obra = obraRepository.findById(obraId).orElse(null);
-		Cliente cliente = clienteRepository.findById(clienteId).orElse(null);
-
-		if (obra == null || cliente == null) {
-			return ResponseEntity.badRequest().body("Obra ou cliente não encontrado");
-		}
-
-		obraRepository.save(obra);
-
-		return ResponseEntity.ok("Cliente associado à obra com sucesso");
-	}
-
 	@GetMapping("/listar")
 	public ResponseEntity<List<Cliente>> listarClientes() {
 		List<Cliente> clientes = clienteRepository.findAll();
