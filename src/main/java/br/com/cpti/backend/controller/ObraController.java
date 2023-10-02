@@ -39,12 +39,28 @@ public class ObraController {
 		return ResponseEntity.ok("Cliente associado à obra com sucesso");
 	}
 
-	 @GetMapping("/	")
-	    public ResponseEntity<List<Cliente>> listarClientes() {
-	        List<Cliente> clientes = clienteRepository.findAll();
-	        if (clientes.isEmpty()) {
-	            return ResponseEntity.noContent().build();
-	        }
-	        return ResponseEntity.ok(clientes);
-	    }
+	@GetMapping("/listar")
+	public ResponseEntity<List<Cliente>> listarClientes() {
+		List<Cliente> clientes = clienteRepository.findAll();
+		if (clientes.isEmpty()) {
+			return ResponseEntity.noContent().build();
+		}
+		return ResponseEntity.ok(clientes);
+	}
+
+	public ObraRepository getObraRepository() {
+		return obraRepository;
+	}
+
+	public void setObraRepository(ObraRepository obraRepository) {
+		this.obraRepository = obraRepository;
+	}
+
+	public ClienteRepository getClienteRepository() {
+		return clienteRepository;
+	}
+
+	public void setClienteRepository(ClienteRepository clienteRepository) {
+		this.clienteRepository = clienteRepository;
+	}
 }

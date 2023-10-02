@@ -19,4 +19,12 @@ public class ClienteController {
 	public Cliente inserirCliente(@RequestBody Cliente cliente) {
 		return clienteRepository.save(cliente);
 	}
+
+	public ClienteRepository getClienteRepository() {
+		return clienteRepository;
+	}
+
+	public void setClienteRepository(ClienteRepository clienteRepository) {
+		this.clienteRepository = clienteRepository;
+	}
 }
